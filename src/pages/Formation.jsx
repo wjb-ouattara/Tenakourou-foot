@@ -4,14 +4,21 @@ import { Link } from "react-router-dom";
 import { FORMATION_STEPS } from "../data/clubData";
 import { PageHeader, SectionLabel } from "../components/ui";
 import { useScrollReveal } from "../hooks";
+import hero2 from '/images/players/02.jpeg';
+import hero11 from '/images/players/11.jpeg';
+import hero06 from '/images/players/06.jpeg';
+import hero10 from '/images/players/10.jpeg';
+import hero7 from '/images/players/07.jpeg';
+import affiche from '/images/blog/tournoi-tit-affiche.jpeg';
+import academie from '/images/blog/tournoi-tit-academies.jpeg';
 
 /* ── Images entraînements ── */
 const TRAINING_IMGS = [
-  { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/c5727abe-f3d9-4e95-943c-a071806fbeeb.jpg", label: "Technique" },
-  { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/1f8c9d9b-21c8-4847-834c-dc20183d35e5.jpg", label: "Physique"  },
-  { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/0b6a429c-3d86-44cd-b6cf-ddb53265e6a8.jpg", label: "Collectif" },
-  { src: "https://sfctenakourou.com/wp-content/uploads/2024/02/JOUR-FINAL-115-scaled.jpg",                label: "Match"    },
-  { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/35b1055e-fd45-43b9-a63c-afd2e63823a9.jpg", label: "Cardio"   },
+  { src: hero2, label: "Collectif" },
+  { src: hero06, label: "Physique"  },
+  { src: hero7, label: "Match" },
+  { src: hero11, label: "Cardio"    },
+  { src: hero10, label: "Technique"   },
 ];
 
 const PROGRAMMES = [
@@ -178,7 +185,7 @@ function HeroIntro() {
               style={{ height: 420, boxShadow: "0 32px 80px rgba(0,0,0,.5)" }}
             >
               <img
-                src="https://sfctenakourou.com/wp-content/uploads/2021/10/c5727abe-f3d9-4e95-943c-a071806fbeeb.jpg"
+                src={affiche} 
                 alt="Formation SFC Tenakourou"
                 className="w-full h-full object-cover"
               />
@@ -212,7 +219,7 @@ function HeroIntro() {
               style={{ borderColor: "rgba(255,255,255,.3)" }}
             >
               <img
-                src="https://sfctenakourou.com/wp-content/uploads/2024/04/FINALE-TIT-1ERE-EDITION-7-scaled.jpg"
+                src={academie}
                 alt="Finale"
                 className="w-full h-full object-cover"
               />

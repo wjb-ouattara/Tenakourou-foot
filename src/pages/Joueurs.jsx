@@ -447,34 +447,13 @@ export default function Joueurs() {
           {/* ── SPOTLIGHT + GRILLE ── */}
           {filtered.length > 0 && (
             <>
-              {/* Ligne spotlight + 3 cartes */}
-              <div className="grid lg:grid-cols-4 gap-5 mb-5">
-                {/* Joueur spotlight — prend 1 col mais plus grand */}
-                {spotlight && (
-                  <div className="lg:col-span-1">
-                    <div className="mb-3 flex items-center gap-2">
-                      <span className="font-display text-xs tracking-widest" style={{ color: "var(--gold)", letterSpacing: ".18em" }}>⭐ SPOTLIGHT</span>
-                    </div>
-                    <PlayerCard player={spotlight} index={0} isSpotlight />
-                  </div>
-                )}
-
-                {/* 3 cartes normales */}
-                <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  {rest.slice(0, 3).map((player, i) => (
-                    <PlayerCard key={player.id} player={player} index={i + 1} />
-                  ))}
-                </div>
+              {filtered.length > 0 && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                {filtered.map((player, i) => (
+                  <PlayerCard key={player.id} player={player} index={i} />
+                ))}
               </div>
-
-              {/* Reste en grille 4 colonnes */}
-              {rest.length > 3 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-                  {rest.slice(3).map((player, i) => (
-                    <PlayerCard key={player.id} player={player} index={i + 4} />
-                  ))}
-                </div>
-              )}
+            )}
             </>
           )}
         </div>

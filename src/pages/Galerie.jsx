@@ -2,22 +2,131 @@
 import { useState, useEffect, useCallback } from "react";
 import { PageHeader, SectionLabel } from "../components/ui";
 import { useScrollReveal } from "../hooks";
+import hero1    from "/images/players/01.jpeg";
+import hero2    from "/images/players/02.jpeg";
+import hero3    from "/images/players/03.jpeg";
+import hero4    from "/images/players/04.jpeg";
+import hero5    from "/images/players/05.jpeg";
+import hero6    from "/images/players/06.jpeg";
+import hero7    from "/images/players/07.jpeg";
+import hero8    from "/images/players/08.jpeg";
+import hero9    from "/images/players/09.jpeg";
+import hero10   from "/images/players/10.jpeg";
+import hero11   from "/images/players/11.jpeg";
+import hero12   from "/images/players/12.jpeg";
+import hero13   from "/images/players/13.jpeg";
+import hero18   from "/images/players/18.jpg";
+import hero25 from '/images/players/25.jpg';
+import hero28 from '/images/players/28.jpg';
+import hero21 from '/images/players/21.jpg';
 
-/* ══ TOUTES LES PHOTOS CATÉGORISÉES ══════════════════════ */
+/* ══ PHOTOS AVEC LES 3 IMAGES OFFICIELLES DU TOURNOI ══════ */
 const ALBUMS = [
   {
     id: "featured",
     label: "À la une",
     icon: "⭐",
     photos: [
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/FINALE-TIT-1ERE-EDITION-7-scaled.jpg", caption: "Finale 1ère Édition", tag: "FINALE" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/DSC_0409.jpg",                         caption: "Ambiance de feu",       tag: "MATCH"  },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/02/JOUR-FINAL-115-scaled.jpg",            caption: "Match de Gala",         tag: "GALA"   },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/FINALE-TIT-3-30-scaled.jpg",           caption: "Remise du Trophée",     tag: "TROPHÉE"},
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/07/JOUR-FINAL-36-scaled.jpg",             caption: "Tournoi Tenakourou",    tag: "TOURNOI"},
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-344-111-scaled.jpg",        caption: "Jeu collectif",         tag: "MATCH"  },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-74-1.jpg",                  caption: "Duel au milieu",        tag: "ACTION" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-58-scaled.jpg",             caption: "Action offensive",      tag: "ACTION" },
+      /* ── 3 visuels officiels Tournoi TIT 2026 ── */
+      {
+        src: "/images/blog/tournoi-tit-affiche.jpeg",
+        caption: "Tournoi International Tenakourou — 2ᵉ Édition",
+        tag: "TIT 2026",
+      },
+      {
+        src: "/images/blog/tournoi-tit-academies.jpeg",
+        caption: "Académies participantes — Poule A & Poule B",
+        tag: "TIT 2026",
+      },
+      {
+        src: "/images/blog/tournoi-tit-conditions.jpeg",
+        caption: "Lieu & Conditions — Ouagadougou, Gouanghin",
+        tag: "TIT 2026",
+      },
+      /* ── Photos matchs ── */
+      {
+        src: hero1,
+        caption: "Finale 1ère Édition",
+        tag: "FINALE",
+      },
+      {
+        src: hero2,
+        caption: "Entraînement en équipe",
+        tag: "TRAINING",
+      },
+      {
+        src: hero3,
+
+        caption: "Ambiance de feu",
+        tag: "MATCH",
+      },
+      {
+        src: hero4,
+        caption: "Match de Gala",
+        tag: "GALA",
+      },
+      {
+        src: hero5,
+        caption: "Remise du Trophée",
+        tag: "TROPHÉE",
+      },
+      {
+        src: hero6,
+        caption: "Tournoi Tenakourou",
+        tag: "TOURNOI",
+      },
+      {
+        src: hero7,
+        caption: "Jeu collectif",
+        tag: "MATCH",
+      },
+      {
+        src: hero8,
+        caption: "Action de l'attaque",
+        tag: "MATCH",
+      },
+      {
+        src: hero9,
+        caption: "Duel au milieu",
+        tag: "ACTION",
+      },
+      {
+        src: hero10,
+        caption: "Action offensive",
+        tag: "ACTION",
+      },
+    ],
+  },
+  {
+    id: "tournoi",
+    label: "Tournoi TIT 2026",
+    icon: "🏆",
+    photos: [
+      {
+        src: "/images/blog/tournoi-tit-affiche.jpeg",
+        caption: "Affiche officielle — TIT 2ᵉ Édition",
+        tag: "TIT 2026",
+      },
+      {
+        src: "/images/blog/tournoi-tit-academies.jpeg",
+        caption: "Les 8 académies participantes",
+        tag: "TIT 2026",
+      },
+      {
+        src: "/images/blog/tournoi-tit-conditions.jpeg",
+        caption: "Lieu : Académie Tenakourou, Gouanghin",
+        tag: "TIT 2026",
+      },
+      {
+        src: hero25,
+        caption: "Finale 1ère Édition",
+        tag: "FINALE",
+      },
+      {
+        src: hero28,
+        caption: "Remise du Trophée",
+        tag: "TROPHÉE",
+      },
     ],
   },
   {
@@ -25,14 +134,14 @@ const ALBUMS = [
     label: "Entraînements",
     icon: "🏃",
     photos: [
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/c5727abe-f3d9-4e95-943c-a071806fbeeb.jpg", caption: "Séance technique",    tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/1f8c9d9b-21c8-4847-834c-dc20183d35e5.jpg", caption: "Travail physique",    tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/0b6a429c-3d86-44cd-b6cf-ddb53265e6a8.jpg", caption: "Exercices collectifs",tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/314d8816-29ac-4ae3-a606-e730a78c39e6.jpg", caption: "Préparation physique", tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/51c58af8-18ce-4234-b76b-ac785739f556.jpg", caption: "Entraînement gardien", tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/35b1055e-fd45-43b9-a63c-afd2e63823a9.jpg", caption: "Session matinale",    tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/74fb6366-0bcb-429d-b897-a205c9763ace.jpg", caption: "Exercice de passe",   tag: "TRAINING" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/6106d147-70cd-4c5c-99a3-8c73b851b34b.jpg", caption: "Tirs au but",         tag: "TRAINING" },
+      { src: hero11, caption: "Séance technique",    tag: "TRAINING" },
+      { src: hero12, caption: "Travail physique",    tag: "TRAINING" },
+      { src: hero13, caption: "Exercices collectifs", tag: "TRAINING" },
+      { src: hero25, caption: "Préparation physique", tag: "TRAINING" },
+      { src: hero28, caption: "Entraînement gardien", tag: "TRAINING" },
+      { src: hero21, caption: "Session matinale",    tag: "TRAINING" },
+      { src: hero1, caption: "Exercice de passe",   tag: "TRAINING" },
+      { src: hero2, caption: "Tirs au but",         tag: "TRAINING" },
     ],
   },
   {
@@ -40,17 +149,17 @@ const ALBUMS = [
     label: "Joueurs",
     icon: "👤",
     photos: [
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-72.jpg",                        caption: "Portrait officiel",   tag: "PORTRAIT" },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/02/JOUR-FINAL-108-scaled.jpg",               caption: "Photo d'équipe",      tag: "ÉQUIPE"   },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-67-scaled.jpg",                caption: "En action",           tag: "ACTION"   },
-      { src: "https://sfctenakourou.com/wp-content/uploads/2021/10/0b0aad0a-455e-4092-88a6-e3302e27d1cb.jpg",caption: "Avant le match",      tag: "PORTRAIT" },
+      { src: hero18,                        caption: "Portrait officiel",  tag: "PORTRAIT" },
+      { src: hero9,               caption: "Photo d'équipe",     tag: "ÉQUIPE"   },
+      { src: hero8,                caption: "En action",          tag: "ACTION"   },
+      { src: hero7,caption: "Avant le match",     tag: "PORTRAIT" },
     ],
   },
 ];
 
 const ALL_PHOTOS = ALBUMS.flatMap((a) => a.photos);
 
-/* ══ LIGHTBOX ════════════════════════════════════════════ */
+/* ══ LIGHTBOX ════════════════════════════════════════════════ */
 function Lightbox({ photos, index, onClose, onNav }) {
   const photo = photos[index];
 
@@ -70,9 +179,9 @@ function Lightbox({ photos, index, onClose, onNav }) {
       style={{ background: "rgba(5,20,10,.96)", backdropFilter: "blur(20px)" }}
       onClick={onClose}
     >
-      {/* Compteur haut */}
+      {/* Compteur */}
       <div
-        className="absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-2 rounded-full text-xs font-bold text-white"
+        className="absolute top-5 left-1/2 -translate-x-1/2 flex items-center gap-3 px-5 py-2 rounded-full text-xs font-bold text-white"
         style={{ background: "rgba(255,255,255,.1)", letterSpacing: ".1em" }}
       >
         <span style={{ color: "var(--gold)" }}>{index + 1}</span>
@@ -83,29 +192,22 @@ function Lightbox({ photos, index, onClose, onNav }) {
       {/* Fermer */}
       <button
         className="absolute top-5 right-5 w-11 h-11 rounded-full flex items-center justify-center text-white text-2xl font-light transition-all hover:rotate-90"
-        style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.15)" }}
+        style={{ background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.15)" }}
         onClick={onClose}
-      >
-        ×
-      </button>
+      >×</button>
 
       {/* Flèches */}
-      {[[-1,"‹","left-5 sm:left-8"],[ 1,"›","right-5 sm:right-8"]].map(([dir, arrow, pos]) => (
+      {[[-1, "‹", "left-5 sm:left-8"], [1, "›", "right-5 sm:right-8"]].map(([dir, arrow, pos]) => (
         <button
           key={dir}
           className={`absolute ${pos} top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bold text-2xl text-white transition-all hover:scale-110`}
           style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.15)" }}
           onClick={(e) => { e.stopPropagation(); onNav(dir); }}
-        >
-          {arrow}
-        </button>
+        >{arrow}</button>
       ))}
 
-      {/* Image principale */}
-      <div
-        className="max-w-5xl w-full mx-20 sm:mx-28 flex flex-col items-center"
-        onClick={(e) => e.stopPropagation()}
-      >
+      {/* Image */}
+      <div className="max-w-5xl w-full mx-20 sm:mx-28 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
         <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full" style={{ maxHeight: "72vh" }}>
           <img
             src={photo.src}
@@ -113,27 +215,18 @@ function Lightbox({ photos, index, onClose, onNav }) {
             className="w-full object-contain"
             style={{ maxHeight: "72vh" }}
           />
-          {/* Gradient bas */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-24"
-            style={{ background: "linear-gradient(to top, rgba(0,0,0,.8), transparent)" }}
-          />
-          {/* Tag */}
+          <div className="absolute bottom-0 left-0 right-0 h-24" style={{ background: "linear-gradient(to top,rgba(0,0,0,.8),transparent)" }}/>
           <div className="absolute top-4 left-4">
-            <span
-              className="px-3 py-1 rounded-full text-xs font-bold text-white"
-              style={{ background: "var(--g)", letterSpacing: ".1em" }}
-            >
+            <span className="px-3 py-1 rounded-full text-xs font-bold text-white" style={{ background: "var(--g)", letterSpacing: ".1em" }}>
               {photo.tag}
             </span>
           </div>
-          {/* Caption bas */}
           <div className="absolute bottom-5 left-5 right-5">
             <p className="font-display text-white text-xl">{photo.caption}</p>
           </div>
         </div>
 
-        {/* Miniatures navigation */}
+        {/* Miniatures */}
         <div className="flex gap-2 mt-4 overflow-x-auto pb-2 max-w-full">
           {photos.map((p, i) => (
             <div
@@ -141,11 +234,10 @@ function Lightbox({ photos, index, onClose, onNav }) {
               onClick={() => onNav(i - index)}
               className="flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-200"
               style={{
-                width:      52,
-                height:     40,
-                border:     i === index ? "2px solid var(--gold)" : "2px solid rgba(255,255,255,.1)",
-                opacity:    i === index ? 1 : 0.45,
-                transform:  i === index ? "scale(1.1)" : "scale(1)",
+                width: 52, height: 40,
+                border: i === index ? "2px solid var(--gold)" : "2px solid rgba(255,255,255,.1)",
+                opacity: i === index ? 1 : 0.45,
+                transform: i === index ? "scale(1.1)" : "scale(1)",
               }}
             >
               <img src={p.src} alt="" className="w-full h-full object-cover" />
@@ -157,87 +249,39 @@ function Lightbox({ photos, index, onClose, onNav }) {
   );
 }
 
-/* ══ BENTO GRID — layout éditorial façon Barça ══════════ */
+/* ══ BENTO GRID ══════════════════════════════════════════════ */
 function BentoGrid({ photos, onOpen }) {
   if (!photos.length) return null;
 
-  /* On découpe en blocs de 7 pour alterner les patterns */
   const chunks = [];
-  for (let i = 0; i < photos.length; i += 7) {
-    chunks.push(photos.slice(i, i + 7));
-  }
+  for (let i = 0; i < photos.length; i += 7) chunks.push(photos.slice(i, i + 7));
 
   return (
     <div className="space-y-3">
       {chunks.map((chunk, ci) => (
         <div key={ci} className="space-y-3">
-          {/* ── Ligne 1 : 1 grande + 2 verticales ── */}
+          {/* Ligne 1 : 1 grande + 2 empilées */}
           {chunk[0] && (
             <div className="grid grid-cols-3 gap-3" style={{ height: 380 }}>
-              {/* Grande image gauche */}
-              <PhotoCard
-                photo={chunk[0]}
-                index={ci * 7 + 0}
-                onOpen={onOpen}
-                className="col-span-2"
-                height="100%"
-                textSize="large"
-              />
-              {/* 2 petites à droite empilées */}
+              <PhotoCard photo={chunk[0]} index={ci * 7 + 0} onOpen={onOpen} className="col-span-2" height="100%" textSize="large" />
               <div className="flex flex-col gap-3">
-                {chunk[1] && (
-                  <PhotoCard
-                    photo={chunk[1]}
-                    index={ci * 7 + 1}
-                    onOpen={onOpen}
-                    className="flex-1"
-                    height="100%"
-                    textSize="small"
-                  />
-                )}
-                {chunk[2] && (
-                  <PhotoCard
-                    photo={chunk[2]}
-                    index={ci * 7 + 2}
-                    onOpen={onOpen}
-                    className="flex-1"
-                    height="100%"
-                    textSize="small"
-                  />
-                )}
+                {chunk[1] && <PhotoCard photo={chunk[1]} index={ci * 7 + 1} onOpen={onOpen} className="flex-1" height="100%" textSize="small" />}
+                {chunk[2] && <PhotoCard photo={chunk[2]} index={ci * 7 + 2} onOpen={onOpen} className="flex-1" height="100%" textSize="small" />}
               </div>
             </div>
           )}
-
-          {/* ── Ligne 2 : 3 égales ── */}
+          {/* Ligne 2 : 3 égales */}
           {chunk[3] && (
             <div className="grid grid-cols-3 gap-3" style={{ height: 280 }}>
               {[chunk[3], chunk[4], chunk[5]].filter(Boolean).map((photo, j) => (
-                <PhotoCard
-                  key={j}
-                  photo={photo}
-                  index={ci * 7 + 3 + j}
-                  onOpen={onOpen}
-                  className=""
-                  height="100%"
-                  textSize="medium"
-                />
+                <PhotoCard key={j} photo={photo} index={ci * 7 + 3 + j} onOpen={onOpen} className="" height="100%" textSize="medium" />
               ))}
             </div>
           )}
-
-          {/* ── Ligne 3 : 1 large plein width ── */}
+          {/* Ligne 3 : billboard plein width */}
           {chunk[6] && (
             <div style={{ height: 320 }}>
-              <PhotoCard
-                photo={chunk[6]}
-                index={ci * 7 + 6}
-                onOpen={onOpen}
-                className="w-full"
-                height="100%"
-                textSize="hero"
-                wide
-              />
+              <PhotoCard photo={chunk[6]} index={ci * 7 + 6} onOpen={onOpen} className="w-full" height="100%" textSize="hero" wide />
             </div>
           )}
         </div>
@@ -246,15 +290,14 @@ function BentoGrid({ photos, onOpen }) {
   );
 }
 
-/* ══ CARTE PHOTO individuelle ════════════════════════════ */
+/* ══ CARTE PHOTO ════════════════════════════════════════════ */
 function PhotoCard({ photo, index, onOpen, className = "", height = 280, textSize = "medium", wide = false }) {
   const [hovered, setHovered] = useState(false);
 
   const tagColors = {
-    FINALE:  "#D4A017", TROPHÉE: "#D4A017", TOURNOI: "#D4A017",
-    MATCH:   "#0B8F3A", ACTION:  "#0B8F3A", GALA:    "#0B8F3A",
-    TRAINING:"#1a4a82", ÉQUIPE:  "#1a4a82",
-    PORTRAIT:"#4A1A8A",
+    "TIT 2026": "#E53E3E", FINALE: "#D4A017", TROPHÉE: "#D4A017", TOURNOI: "#D4A017",
+    MATCH: "#0B8F3A", ACTION: "#0B8F3A", GALA: "#0B8F3A",
+    TRAINING: "#1a4a82", ÉQUIPE: "#1a4a82", PORTRAIT: "#4A1A8A",
   };
   const tagColor = tagColors[photo.tag] || "var(--g)";
 
@@ -263,70 +306,53 @@ function PhotoCard({ photo, index, onOpen, className = "", height = 280, textSiz
       className={`relative overflow-hidden rounded-2xl cursor-pointer reveal ${className}`}
       style={{
         height,
-        boxShadow:  hovered
+        boxShadow: hovered
           ? "0 24px 60px rgba(0,0,0,.45), 0 0 0 2px rgba(11,143,58,.5)"
           : "0 8px 28px rgba(0,0,0,.22)",
-        transform:  hovered ? "scale(1.015)" : "scale(1)",
+        transform: hovered ? "scale(1.015)" : "scale(1)",
         transition: "transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s",
-        zIndex:     hovered ? 10 : 1,
+        zIndex: hovered ? 10 : 1,
       }}
       data-delay={index * 35}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => onOpen(index)}
     >
-      {/* Image */}
       <img
         src={photo.src}
         alt={photo.caption}
         className="w-full h-full object-cover"
         style={{
-          transform:  hovered ? "scale(1.08)" : "scale(1)",
+          transform: hovered ? "scale(1.08)" : "scale(1)",
           transition: "transform .55s cubic-bezier(.4,0,.2,1)",
         }}
-        onError={(e) => {
-          e.target.style.background = "var(--gs)";
-          e.target.style.display = "none";
-        }}
+        onError={(e) => { e.target.style.background = "var(--gs)"; e.target.style.display = "none"; }}
       />
 
-      {/* Gradient permanent */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: wide
-            ? "linear-gradient(90deg, rgba(5,20,10,.8) 0%, rgba(5,20,10,.3) 50%, rgba(0,0,0,0) 100%)"
-            : "linear-gradient(to top, rgba(5,20,10,.85) 0%, rgba(5,20,10,.2) 50%, transparent 100%)",
-        }}
-      />
-
-      {/* Gradient hover supplémentaire */}
-      <div
-        className="absolute inset-0 transition-opacity duration-400"
-        style={{
-          background: "linear-gradient(135deg, rgba(11,143,58,.35) 0%, transparent 70%)",
-          opacity:    hovered ? 1 : 0,
-        }}
-      />
+      {/* Gradients */}
+      <div className="absolute inset-0" style={{
+        background: wide
+          ? "linear-gradient(90deg, rgba(5,20,10,.8) 0%, rgba(5,20,10,.3) 50%, rgba(0,0,0,0) 100%)"
+          : "linear-gradient(to top, rgba(5,20,10,.85) 0%, rgba(5,20,10,.2) 50%, transparent 100%)",
+      }}/>
+      <div className="absolute inset-0 transition-opacity duration-400" style={{
+        background: "linear-gradient(135deg, rgba(11,143,58,.35) 0%, transparent 70%)",
+        opacity: hovered ? 1 : 0,
+      }}/>
 
       {/* Tag */}
       <div className="absolute top-3 left-3">
-        <span
-          className="px-2.5 py-1 rounded-full font-bold text-white"
-          style={{ background: tagColor, fontSize: 10, letterSpacing: ".1em" }}
-        >
+        <span className="px-2.5 py-1 rounded-full font-bold text-white" style={{ background: tagColor, fontSize: 10, letterSpacing: ".1em" }}>
           {photo.tag}
         </span>
       </div>
 
-      {/* Icône loupe au hover */}
+      {/* Loupe hover */}
       <div
         className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center text-white transition-all duration-300"
         style={{
-          background: "rgba(255,255,255,.18)",
-          backdropFilter: "blur(4px)",
-          opacity:    hovered ? 1 : 0,
-          transform:  hovered ? "scale(1)" : "scale(.7)",
+          background: "rgba(255,255,255,.18)", backdropFilter: "blur(4px)",
+          opacity: hovered ? 1 : 0, transform: hovered ? "scale(1)" : "scale(.7)",
         }}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="2">
@@ -335,23 +361,14 @@ function PhotoCard({ photo, index, onOpen, className = "", height = 280, textSiz
       </div>
 
       {/* Caption */}
-      <div
-        className="absolute left-4 right-4"
-        style={{ bottom: textSize === "small" ? 10 : 16 }}
-      >
+      <div className="absolute left-4 right-4" style={{ bottom: textSize === "small" ? 10 : 16 }}>
         {textSize === "hero" ? (
           <>
-            <p className="font-display text-white mb-1" style={{ fontSize: "clamp(20px,2.5vw,32px)", lineHeight: 1.1 }}>
-              {photo.caption}
-            </p>
-            <p className="text-xs font-semibold" style={{ color: "rgba(255,255,255,.5)", letterSpacing: ".12em" }}>
-              SFC TENAKOUROU
-            </p>
+            <p className="font-display text-white mb-1" style={{ fontSize: "clamp(20px,2.5vw,32px)", lineHeight: 1.1 }}>{photo.caption}</p>
+            <p className="text-xs font-semibold" style={{ color: "rgba(255,255,255,.5)", letterSpacing: ".12em" }}>SFC TENAKOUROU</p>
           </>
         ) : textSize === "large" ? (
-          <p className="font-display text-white" style={{ fontSize: "clamp(18px,2vw,26px)", lineHeight: 1.2 }}>
-            {photo.caption}
-          </p>
+          <p className="font-display text-white" style={{ fontSize: "clamp(18px,2vw,26px)", lineHeight: 1.2 }}>{photo.caption}</p>
         ) : textSize === "medium" ? (
           <p className="font-semibold text-white text-sm leading-snug">{photo.caption}</p>
         ) : (
@@ -362,7 +379,7 @@ function PhotoCard({ photo, index, onOpen, className = "", height = 280, textSiz
   );
 }
 
-/* ══ PAGE GALERIE ════════════════════════════════════════ */
+/* ══ PAGE GALERIE ════════════════════════════════════════════ */
 export default function Galerie() {
   useScrollReveal();
 
@@ -376,37 +393,24 @@ export default function Galerie() {
   const openLightbox  = useCallback((i) => setLightboxIndex(i), []);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const navLightbox   = useCallback((dir) => {
-    setLightboxIndex((prev) => {
-      if (typeof dir === "number" && Math.abs(dir) === 1) {
-        return (prev + dir + currentPhotos.length) % currentPhotos.length;
-      }
-      // nav directe depuis miniatures
-      return ((prev ?? 0) + dir + currentPhotos.length) % currentPhotos.length;
-    });
+    setLightboxIndex((prev) => ((prev ?? 0) + dir + currentPhotos.length) % currentPhotos.length);
   }, [currentPhotos.length]);
 
   return (
     <>
       <PageHeader title="GALERIE" breadcrumb={["Galerie"]} />
 
-      {/* ── Hero intro ── */}
+      {/* ── Hero intro sombre ── */}
       <div
-        className="relative overflow-hidden py-16 px-5 sm:px-8"
-        style={{ background: "linear-gradient(135deg, var(--ink) 0%, var(--g3) 60%, var(--g2) 100%)" }}
+        className="relative overflow-hidden px-5 sm:px-8 py-14"
+        style={{ background: "linear-gradient(135deg,var(--ink) 0%,var(--g3) 60%,var(--g2) 100%)" }}
       >
-        {/* Pattern grille */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px)",
-            backgroundSize:  "60px 60px",
-          }}
-        />
-        {/* Ghost text */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}/>
         <div className="absolute inset-0 flex items-center justify-end pr-10 pointer-events-none select-none overflow-hidden">
-          <span className="font-display text-white leading-none" style={{ fontSize: "clamp(80px,18vw,200px)", opacity: .04 }}>
-            PHOTOS
-          </span>
+          <span className="font-display text-white leading-none" style={{ fontSize: "clamp(80px,18vw,200px)", opacity: .04 }}>PHOTOS</span>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -414,16 +418,14 @@ export default function Galerie() {
             <div>
               <SectionLabel>Mémoires du club</SectionLabel>
               <h2 className="font-display text-white leading-none mt-2" style={{ fontSize: "clamp(42px,6vw,80px)" }}>
-                NOS MEILLEURS<br/>
-                <span style={{ color: "var(--gold)" }}>MOMENTS</span>
+                NOS MEILLEURS<br/><span style={{ color: "var(--gold)" }}>MOMENTS</span>
               </h2>
             </div>
-            {/* Stats rapides */}
             <div className="flex gap-8 text-white">
               {[
                 { n: ALL_PHOTOS.length + "+", l: "Photos" },
-                { n: ALBUMS.length,            l: "Albums"  },
-                { n: "2024",                   l: "Saison"  },
+                { n: ALBUMS.length,            l: "Albums" },
+                { n: "2024–26",                l: "Saisons" },
               ].map((s) => (
                 <div key={s.l} className="text-center">
                   <div className="font-display leading-none mb-0.5" style={{ fontSize: 36, color: "var(--gold)" }}>{s.n}</div>
@@ -435,10 +437,12 @@ export default function Galerie() {
         </div>
       </div>
 
-      {/* ── Filtres albums ── */}
-      <div className="sticky top-[72px] z-40 py-4 px-5 sm:px-8" style={{ background: "rgba(255,255,255,.97)", backdropFilter: "blur(16px)", borderBottom: "1px solid var(--bord)" }}>
+      {/* ── Filtres sticky ── */}
+      <div
+        className="sticky top-[76px] z-40 py-4 px-5 sm:px-8"
+        style={{ background: "rgba(255,255,255,.97)", backdropFilter: "blur(16px)", borderBottom: "1px solid var(--bord)" }}
+      >
         <div className="max-w-7xl mx-auto flex gap-2 overflow-x-auto pb-1">
-          {/* Bouton Tout */}
           <button
             onClick={() => setActiveAlbum("all")}
             className="flex-shrink-0 flex items-center gap-2 px-5 py-2 rounded-xl font-bold text-sm transition-all duration-200"
@@ -450,10 +454,8 @@ export default function Galerie() {
             }}
           >
             🖼️ Tous
-            <span
-              className="px-1.5 py-0.5 rounded-full text-xs font-bold"
-              style={{ background: activeAlbum === "all" ? "rgba(255,255,255,.25)" : "var(--gm)", color: activeAlbum === "all" ? "white" : "var(--g3)" }}
-            >
+            <span className="px-1.5 py-0.5 rounded-full text-xs font-bold"
+              style={{ background: activeAlbum === "all" ? "rgba(255,255,255,.25)" : "var(--gm)", color: activeAlbum === "all" ? "white" : "var(--g3)" }}>
               {ALL_PHOTOS.length}
             </span>
           </button>
@@ -471,10 +473,8 @@ export default function Galerie() {
               }}
             >
               {album.icon} {album.label}
-              <span
-                className="px-1.5 py-0.5 rounded-full text-xs font-bold"
-                style={{ background: activeAlbum === album.id ? "rgba(255,255,255,.25)" : "var(--gm)", color: activeAlbum === album.id ? "white" : "var(--g3)" }}
-              >
+              <span className="px-1.5 py-0.5 rounded-full text-xs font-bold"
+                style={{ background: activeAlbum === album.id ? "rgba(255,255,255,.25)" : "var(--gm)", color: activeAlbum === album.id ? "white" : "var(--g3)" }}>
                 {album.photos.length}
               </span>
             </button>
@@ -482,12 +482,11 @@ export default function Galerie() {
         </div>
       </div>
 
-      {/* ── Grille Bento éditoriale ── */}
+      {/* ── Grille Bento ── */}
       <section className="py-10 px-5 sm:px-8" style={{ background: "#0D1F16" }}>
         <div className="max-w-7xl mx-auto">
           <BentoGrid photos={currentPhotos} onOpen={openLightbox} />
 
-          {/* CTA */}
           <div className="text-center mt-12">
             <a
               href="https://sfctenakourou.com/galerie-2/"

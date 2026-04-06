@@ -1,7 +1,8 @@
 // src/pages/Contact.jsx
-import { useState } from "react";
+import { use, useState } from "react";
 import { CLUB, ASSETS } from "../data/clubData";
 import { PageHeader } from "../components/ui";
+import { useScrollReveal } from "../hooks";
 
 const inputBase = {
   borderColor:  "var(--bord)",
@@ -20,6 +21,7 @@ const inputBase = {
 };
 
 export default function Contact() {
+  useScrollReveal();
   const [form, setForm] = useState({ nom: "", email: "", sujet: "", message: "" });
   const [sent, setSent] = useState(false);
 

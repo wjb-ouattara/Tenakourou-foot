@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useIntersection, useScrollReveal } from "../hooks";
 import { TEAM_STATS, STANDINGS, ASSETS } from "../data/clubData";
 import { SectionLabel } from "../components/ui";
+import {StaffSection} from "./StaffSection";
 
 /* ══ DONNÉES TIMELINE ══════════════════════════════════════ */
 const TIMELINE = [
@@ -520,11 +521,14 @@ export default function Apropos() {
   return (
     <>
       <HeroSection />
+      <StaffSection />
       <TimelineSection />
+      <StatsSection />
       <ValeursSection />
       <StatsSection />
       <ClassementSection />
       <CtaFinal />
+      
     </>
   );
 }

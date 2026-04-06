@@ -366,3 +366,26 @@ body {
     rgba(9,122,48,.85) 100%
   );
 }
+
+/* Lien nav actif — underline dorée visible sur tous fonds */
+.active-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--gold);
+}
+
+/* Quand navbar est solid (blanc), les liens deviennent sombres */
+#main-navbar.solid a {
+  color: var(--muted) !important;
+}
+#main-navbar.solid a.active-nav-link {
+  color: var(--g) !important;
+}
+#main-navbar.solid .active-nav-link::after {
+  background: var(--g);
+}

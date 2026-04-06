@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NEWS_ITEMS } from "../data/clubData";
 import { useScrollReveal } from "../hooks";
+import hero25 from '/images/players/25.jpg';
+import hero28 from '/images/players/28.jpg';
+import hero21 from '/images/players/21.jpg';
 
 /* ══ DONNÉES ENRICHIES ══════════════════════════════════════ */
 const ALL_NEWS = [
@@ -11,21 +14,21 @@ const ALL_NEWS = [
     id: 5, category: "RÉSULTAT", featured: false,
     title: "2-0 contre FC Houet : une victoire de maîtrise",
     date: "5 Mars 2026", readTime: "2 min",
-    image: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-344-111-scaled.jpg",
+    image: hero25,
     summary: "Une performance solide des Lions du Plateau qui confirme leur leadership au classement régional.",
   },
   {
     id: 6, category: "INTERVIEW", featured: false,
     title: "Ali KY : « Notre objectif est le titre national cette saison »",
     date: "2 Mars 2026", readTime: "5 min",
-    image: "https://sfctenakourou.com/wp-content/uploads/2024/04/JOUR-FINAL-72.jpg",
+    image: hero28,
     summary: "Le capitaine se confie sur les ambitions du club, sa carrière et l'état d'esprit du vestiaire.",
   },
   {
     id: 7, category: "JEUNES", featured: false,
     title: "Les U17 qualifiés pour la phase finale régionale",
     date: "28 Fév 2026", readTime: "2 min",
-    image: "https://sfctenakourou.com/wp-content/uploads/2021/10/c5727abe-f3d9-4e95-943c-a071806fbeeb.jpg",
+    image: hero21,
     summary: "La formation du club porte ses fruits avec une génération dorée qui réalise un parcours sans faute.",
   },
 ];
