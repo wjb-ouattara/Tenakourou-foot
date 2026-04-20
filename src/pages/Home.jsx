@@ -5,13 +5,7 @@ import { ASSETS, MATCHES, PLAYERS, FORMATION_STEPS, NEWS_ITEMS } from "../data/c
 import { SectionLabel } from "../components/ui";
 import { useScrollReveal } from "../hooks";
 
-/* ═══ HERO ═══════════════════════════════════ */
-const HERO_STATS = [
-  { value: "15+",  label: "Années d'expérience" },
-  { value: "200+", label: "Joueurs formés"       },
-  { value: "12",   label: "Titres régionaux"     },
-  { value: "100%", label: "Passion"              },
-];
+
 
 function Hero() {
   const [currentBg, setCurrentBg] = useState(0);
@@ -152,37 +146,6 @@ function Hero() {
             >
               Découvrir l'équipe
             </Link>
-          </div>
-
-          {/* Stats vitrées */}
-          <div
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14 reveal"
-            data-delay="320"
-          >
-            {HERO_STATS.map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl p-4 text-center transition-transform duration-300 hover:-translate-y-1.5 cursor-default"
-                style={{
-                  background:     "rgba(255,255,255,.1)",
-                  backdropFilter: "blur(10px)",
-                  border:         "1px solid rgba(255,255,255,.18)",
-                }}
-              >
-                <div
-                  className="font-display text-white leading-none mb-1"
-                  style={{ fontSize: 38 }}
-                >
-                  {s.value}
-                </div>
-                <div
-                  className="text-xs font-semibold tracking-wide"
-                  style={{ color: "rgba(255,255,255,.52)" }}
-                >
-                  {s.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
